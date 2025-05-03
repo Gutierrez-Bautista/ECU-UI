@@ -1,13 +1,11 @@
 import { FormEventHandler, useContext, useRef } from "react"
-import { UrlContext } from "../context/urlContext"
+import { DataContext } from "../context/dataContext"
 
 export default function IndexPage () {
-  const { setNewUrl } = useContext(UrlContext)
+  const { setNewUrl } = useContext(DataContext)
   const urlForm = useRef<null | HTMLInputElement>(null)
 
   const handleSubmit: FormEventHandler = (evt) => {
-    console.log(evt)
-    console.log(urlForm)
     evt.preventDefault()
 
     if (!urlForm.current) {

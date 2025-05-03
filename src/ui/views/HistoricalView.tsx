@@ -1,10 +1,10 @@
-import HistoricalGraph from "../components/HistoricalGraph";
+import HistoricalGraph from "../components/historicalGraph";
 
 export default function HistoricalView () {
   return (
     <>
     <h2>Historico</h2>
-    <HistoricalGraph />
+    <HistoricalGraph sensor="rpm" />
     </>
   )
 }

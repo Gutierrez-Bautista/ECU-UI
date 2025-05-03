@@ -1,4 +1,5 @@
-import { Views } from "../pages/types"
+import { Views } from "../../pages/types"
+import './style.css'
 
 interface Props {
   title: string
@@ -13,7 +14,6 @@ export default function Header ({ title, updateViewFunc }: Props) {
   const ViewsKeys = Object.keys(Views) as Views[]
 
   const handleClick = (newView: string) => {
-    console.log(newView, isViewValue(newView), ViewsKeys)
     if (isViewValue(newView)) {
       updateViewFunc(newView as Views)
     }

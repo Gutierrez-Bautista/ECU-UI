@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import './App.css'
-import { UrlContext, UrlProvider } from './context/urlContext'
+import { DataContext, DataProvider } from './context/dataContext'
 import IndexPage from './pages/index'
 import DataPage from './pages/Data'
 
 function AppContent () {
-  const { url } = useContext(UrlContext)
+  const { url } = useContext(DataContext)
 
   return (
     <>
@@ -20,9 +20,9 @@ function AppContent () {
 
 function App() {
   return (
-    <UrlProvider>
+    <DataProvider>
       <AppContent />
-    </UrlProvider>
+    </DataProvider>
   )
 }
 
