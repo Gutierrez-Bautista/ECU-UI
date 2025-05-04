@@ -7,21 +7,19 @@
   "scripts": {
     "dev:react": "vite",
     "dev:electron": "electron .",
-
     "preview": "vite preview",
     "lint": "eslint .",
-
     "transpile:react": "tsc -b && vite build",
     "transpile:electron": "tsc --project src/electron/tsconfig.json",
     "build": "yarn transpile:react && yarn transpile:electron",
-
-    "dist:win": "yarn transpile:electron && yarn build && electron-builder --win --x64",
-    "dist:mac": "yarn transpile:electron && yarn build && electron-builder --mac --arm64",
-    "dist:linux": "yarn transpile:electron && yarn build && electron-builder --linux --x64"
+    "dist:win": "yarn build && electron-builder --win --x64",
+    "dist:mac": "yarn build && electron-builder --mac --arm64",
+    "dist:linux": "yarn build && electron-builder --linux --x64"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

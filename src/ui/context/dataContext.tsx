@@ -3,8 +3,8 @@ import { createContext, ReactNode, useState } from "react";
 interface DataContextI {
   url: string | null
   setNewUrl: (url: string) => void
-  values: SensorValues | null
-  addValue: (newValue: number, sensor: Sensors) => void
+  values: SensorValues
+  addValue: (newValue: SensorsValuesItem) => void
   maxValues: number
   setMaxValues: (newMaxValues: number) => void
 }
@@ -12,7 +12,7 @@ interface DataContextI {
 export const DataContext = createContext<DataContextI>({
   url: null,
   setNewUrl: (url: string) => url,
-  values: null,
+  values: [],
   addValue: () => {},
   maxValues: 10,
   setMaxValues: () => {}
@@ -21,27 +21,17 @@ export const DataContext = createContext<DataContextI>({
 export function DataProvider ({ children }: { children: ReactNode }) {
   const [url, setUrl] = useState<null | string>(null)
   const [maxValues, setMaxValues] = useState(20)
-  const [values, setValues] = useState<SensorValues | null>(null)
+  const [values, setValues] = useState<SensorValues>([])
 
   const setNewUrl = (url: string) => {
     setUrl(url)
   }
 
-  const addValue = (newValue: number, sensor: Sensors) => {
+  const addValue = (newValue: SensorsValuesItem) => {
     setValues(prev => {
-      if (!prev) return null;
+      const p = [...prev]
 
-      const p = {...prev}
-
-      if (sensor in p) {
-        if (p[sensor].length === maxValues) {
-          p[sensor].shift()
-        }
-
-        p[sensor].push(newValue)
-      } else {
-        p[sensor] = [newValue]
-      }
+      p.push(newValue)
 
       return p
     })

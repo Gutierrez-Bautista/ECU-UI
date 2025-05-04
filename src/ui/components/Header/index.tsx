@@ -1,4 +1,4 @@
-import { Views } from "../../pages/types"
+import { Views } from "../../types/main"
 import './style.css'
 
 interface Props {
@@ -7,16 +7,10 @@ interface Props {
 }
 
 export default function Header ({ title, updateViewFunc }: Props) {
-  const isViewValue = (value: string): boolean => {
-    return Object.values(Views).includes(value as Views)
-  }
+  const ViewsKeys = Object.keys(Views) as Array<keyof typeof Views>
 
-  const ViewsKeys = Object.keys(Views) as Views[]
-
-  const handleClick = (newView: string) => {
-    if (isViewValue(newView)) {
-      updateViewFunc(newView as Views)
-    }
+  const handleClick = (newView: keyof typeof Views) => {
+    updateViewFunc(Views[newView])
   }
 
   return (
@@ -26,11 +20,13 @@ export default function Header ({ title, updateViewFunc }: Props) {
       <nav>
         <ul>
           {
-            ViewsKeys.map(v => (
-              <li key={v} onClick={() => handleClick(Views[v])}>
-                {v}
-              </li>
-            ))
+            ViewsKeys.map(v => {
+              return (
+                <li key={v} onClick={() => handleClick(v)}>
+                  {v}
+                </li>
+              )
+            })
           }
         </ul>
       </nav>

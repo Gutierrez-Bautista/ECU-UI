@@ -1,3 +1,5 @@
 type Sensors = 'lambda' | 'rpm' | 'engine-temp'
 
-type SensorValues = Record<Sensors, number[]>
+type SensorsValuesItem = Record<Sensors, number>
+
+type SensorValues = SensorsValuesItem[]

@@ -1,31 +1,29 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { DataContext } from "../../context/dataContext"
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, YAxis } from "recharts"
 
 interface Props {
-  color?: `#${string}`
+  fillColor?: `#${string}`
+  lineColor?: `#${string}`
   sensor: Sensors
+  data?: Partial<SensorValues>
+  unit?: string
 }
 
-export default function HistoricalGraph ({ color = '#09f', sensor }: Props) {
+export default function HistoricalGraph ({ fillColor = '#05a', lineColor = '#05a', sensor, data, unit }: Props) {
   const { values } = useContext(DataContext)
-  const [maxValue, setMaxValue] = useState(0)
 
   console.log(sensor)
   console.log(values ?? 'No Values')
 
-  useEffect(() => {
-    if (values && values[sensor]) {
-      let m = 0
-      values[sensor].forEach(v => {
-        if (v > m) m = v;
-      })
-      setMaxValue(m)
-    } 
-  }, [values, sensor])
-
   return (
-    <div style={{width: '20px', height: '20px', backgroundColor: color}}>
-      {maxValue}
-    </div>
+    <ResponsiveContainer width={'100%'} height={200}>
+      <AreaChart data={data ?? values}>
+        <Area stroke={lineColor} fill={fillColor} dataKey={sensor} name={sensor} unit={unit} />
+        <Tooltip />
+        <CartesianGrid opacity={.2} />
+        <YAxis dataKey={sensor} />
+      </AreaChart>
+    </ResponsiveContainer>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Views } from "./types"
+import { Views } from "../types/main"
 import HistoricalView from "../views/HistoricalView"
 import Header from "../components/Header"
 
