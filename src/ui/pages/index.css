@@ -1,0 +1,41 @@
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  position: relative;
+}
+
+span {
+  display: none;
+  position: absolute;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:invalid {
+  color: #f00c;
+  border: 1px solid #f00c;
+}
+
+button {
+  background-color: var(--background-color);
+  border-color: #fff8;
+  transition: all .2s ease;
+
+  &:hover {
+    background-color: var(--secondary-color);
+    border-color: #fffc;
+  }
+}
