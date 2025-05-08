@@ -14,13 +14,13 @@ export default function HistoricalGraph ({ fillColor = '#05a', lineColor = '#05a
   const { values } = useContext(DataContext)
 
   console.log(sensor)
-  console.log(values ?? 'No Values')
+  console.log(values.length === 0 ? data : values)
 
   return (
     <ResponsiveContainer width={'100%'} height={200}>
-      <AreaChart data={data ?? values}>
+      <AreaChart data={data ?? values} margin={{ top: 10, bottom: 10, right: 10, left: 10 }}>
         <Area stroke={lineColor} fill={fillColor} dataKey={sensor} name={sensor} unit={unit} />
-        <Tooltip />
+        <Tooltip separator=" - " />
         <CartesianGrid opacity={.2} />
         <YAxis dataKey={sensor} />
       </AreaChart>

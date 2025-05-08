@@ -1,5 +1,6 @@
 import { FormEventHandler, useContext, useRef } from "react"
 import { DataContext } from "../context/dataContext"
+import './index.css'
 
 export default function IndexPage () {
   const { setNewUrl } = useContext(DataContext)
@@ -16,7 +17,7 @@ export default function IndexPage () {
   }
 
   return (
-    <>
+    <main>
     <h1>ECU</h1>
     <p>Motor sin Inyección Eléctrica</p>
 
@@ -25,6 +26,6 @@ export default function IndexPage () {
       <input id='url-input' type='url' placeholder='Ej: http://localhost:1234' ref={urlForm} />
       <button type="submit">Siguiente</button>
     </form>
-    </>
+    </main>
   )
 }
