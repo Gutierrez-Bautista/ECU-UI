@@ -9,9 +9,10 @@ interface Props {
   sensor: Sensors
   data?: Partial<SensorValues>
   unit?: string
+  animationDuration?: number
 }
 
-export default function HistoricalGraph ({ fillColor = '#05a', lineColor = '#05a', sensor, data, unit }: Props) {
+export default function HistoricalGraph ({ fillColor = '#05a', lineColor = '#05a', sensor, data, unit, animationDuration = 300 }: Props) {
   const { values } = useContext(DataContext)
 
   return (
@@ -24,6 +25,7 @@ export default function HistoricalGraph ({ fillColor = '#05a', lineColor = '#05a
             fill={fillColor} 
             dataKey={sensor} 
             name={sensor} 
+            animationDuration={animationDuration}
           />
           <Tooltip content={<CustomTooltip unit={unit} />} />
           <CartesianGrid opacity={.2} />
