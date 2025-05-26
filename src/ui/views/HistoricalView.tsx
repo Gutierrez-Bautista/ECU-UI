@@ -15,7 +15,7 @@ export default function HistoricalView () {
   return (
     <div style={{width: '500px'}} >
     <h2>Historico</h2>
-    <HistoricalGraph sensor='sonda_lambda' unit="rpm" lineColor="#929" fillColor="#505" />
+    <HistoricalGraph sensor='temp_ref' unit="°C" lineColor="#929" fillColor="#505" />
     </div>
   )
 }

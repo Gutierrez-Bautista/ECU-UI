@@ -12,7 +12,7 @@ export const DataContext = createContext<DataContextI>({
   values: []
 })
 
-const DEFAULT_SENSOR_VALUES: SensorsValuesItem = { 'rpm': 0, 'sonda_lambda': 0, 'engine_temp': 0 }
+const DEFAULT_SENSOR_VALUES: SensorsValuesItem = { 'rpm': 0, 'sonda_lambda': 0, 'temp_admin': 0, 'temp_ref': 0 }
 
 export function DataProvider ({ children }: { children: ReactNode }) {
   const [url, setUrl] = useState<null | string>(null)

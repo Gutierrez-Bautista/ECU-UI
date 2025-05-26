@@ -1,4 +1,4 @@
-type Sensors = 'sonda_lambda' | 'rpm' | 'engine_temp'
+type Sensors = 'sonda_lambda' | 'rpm' | 'temp_admin' | 'temp_ref'
 
 type SensorsValuesItem = Record<Sensors, number>
 
