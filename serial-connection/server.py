@@ -1,36 +1,15 @@
 import websockets
-import json
 import asyncio
-from random import randint
-from typing import Literal, TypedDict, Union
-
-type Sensors = Literal['sonda_lambda', 'rpm', 'engine_temp']
-
-class SensorsValuesSet(TypedDict):
-  sonda_lambda: Union[int, float]
-  rpm: Union[int, float]
-  engine_temp: Union[int, float]
+from serial_reader import send_port_data
 
 connected_clients = set[websockets.ServerConnection]()
 
-async def send_test_data (client: websockets.ServerConnection):
-  await asyncio.sleep(2)
-
-  data: SensorsValuesSet = {
-    "sonda_lambda": randint(0, 100),
-    "rpm": randint(0, 100),
-    "engine_temp": randint(0, 100)
-  }
-
-  print('{}'.format(data))
-  await client.send(json.dumps(data))
-  await send_test_data(client)
-
 async def handle_client (websocket: websockets.ServerConnection):
+  print(websocket)
   connected_clients.add(websocket)
 
   try:
-    await send_test_data(websocket)
+    await send_port_data("COM8", 9600, 2, websocket)
   except:
     pass
   finally:
