@@ -15,11 +15,6 @@ form {
   position: relative;
 }
 
-span {
-  display: none;
-  position: absolute;
-}
-
 input:focus {
   outline: none;
 }

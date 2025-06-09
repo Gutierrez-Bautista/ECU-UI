@@ -1,18 +1,13 @@
-from typing import Literal, TypedDict, Union
+from typing import Literal
 import serial
 import asyncio
 import json
 
 type Sensors = Literal['sonda_lambda', 'rpm', 'temp_admin', 'temp_ref']
 
-class SensorsValuesSet(TypedDict):
-  sonda_lambda: Union[int, float]
-  rpm: Union[int, float]
-  engine_temp: Union[int, float]
-
 from websockets import ServerConnection
 
-def parse_data(data: str) -> dict[str, float]:
+def parse_data(data: str) -> dict[Sensors, float]:
     #rpm, lambda, temp_admin, temp_ref
     da = data.split(',')
 

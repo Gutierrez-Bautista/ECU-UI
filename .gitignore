@@ -26,3 +26,5 @@ dist-electron
 *.sw?
 
 venv/
+serial_reader.cpython-313.pyc
+__pycache__/

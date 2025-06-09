@@ -1,0 +1,52 @@
+.container {
+  position: relative;
+}
+
+.mesure {
+  position: absolute;
+  left: -10px;
+  transform: translate(-100%, 50%);
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(100%, -80%);
+  background-color: rgb(108, 81, 47);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.thermometer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 1px solid white;
+  border-radius: 99999999999px 99999999999px 0 0;
+  overflow: hidden;
+
+  &:hover {
+    .tooltip {
+      display: block;
+    }
+  }
+}
+
+.coverer {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--background-color) 85%, transparent);
+  transition: height .2s linear;
+  interpolate-size: allow-keywords;
+}
+
+.bg {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg, rgb(10 89 249), rgb(5 174 1), rgb(251 239 33), rgb(207, 12, 19) 85%);
+}
